@@ -1,3 +1,7 @@
+output "signalr_service_network_acls_id" {
+  description = "Map of id values across all signalr_service_network_acls, keyed the same as var.signalr_service_network_acls"
+  value       = { for k, v in azurerm_signalr_service_network_acl.signalr_service_network_acls : k => v.id }
+}
 output "signalr_service_network_acls_default_action" {
   description = "Map of default_action values across all signalr_service_network_acls, keyed the same as var.signalr_service_network_acls"
   value       = { for k, v in azurerm_signalr_service_network_acl.signalr_service_network_acls : k => v.default_action }
