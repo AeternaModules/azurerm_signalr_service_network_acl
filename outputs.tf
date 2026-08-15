@@ -12,7 +12,7 @@ output "signalr_service_network_acls_private_endpoint" {
 }
 output "signalr_service_network_acls_public_network" {
   description = "Map of public_network values across all signalr_service_network_acls, keyed the same as var.signalr_service_network_acls"
-  value       = { for k, v in azurerm_signalr_service_network_acl.signalr_service_network_acls : k => v.public_network if v.public_network != null && length(v.public_network) > 0 }
+  value       = { for k, v in azurerm_signalr_service_network_acl.signalr_service_network_acls : k => one(v.public_network) if v.public_network != null && length(v.public_network) > 0 }
 }
 output "signalr_service_network_acls_signalr_service_id" {
   description = "Map of signalr_service_id values across all signalr_service_network_acls, keyed the same as var.signalr_service_network_acls"
